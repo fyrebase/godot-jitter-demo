@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var speed: float = 250
 var velocity: Vector2 = Vector2.ZERO
-var direction: int = 1
 
 func _ready() -> void:
   randomize()
@@ -15,11 +14,11 @@ func _ready() -> void:
   position = Vector2(startPositions[rand_index], rand_range(100.0, screenSize.y - 100))
 
   if position.x > screenSize.x:
-    direction = -1
+    transform.x = Vector2(-1, 0)
     $Sprite.flip_h = true
 
 func _physics_process(delta: float) -> void:
-  velocity = transform.x * direction * speed
+  velocity = transform.x * speed
   move_and_collide(velocity * delta)
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:

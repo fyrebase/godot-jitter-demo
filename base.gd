@@ -15,6 +15,7 @@ func _ready() -> void:
 
   OS.window_fullscreen = true
   OS.window_size = OS.get_screen_size()
+  OS.set_window_always_on_top(true)
 
 func _onTimerTimeout() -> void:
   var e: Node = enemy.instance()
